@@ -32,7 +32,6 @@
         function sendJson(command) {
             json_obj.command = command
             console.log(json_obj)
-            console.log(JSON.stringify(json_obj))
             socket.send(JSON.stringify(json_obj))
         }
 
@@ -72,12 +71,14 @@
             if (event.repeat) return
             keys.push(key)
             handleEvent()
+            console.log(keys)
         })
 
 
         document.addEventListener('keyup', function(event) {
             keys.pop(event.key.toLocaleLowerCase())
             handleEvent()
+            console.log(keys)
         })
 
     </script>
