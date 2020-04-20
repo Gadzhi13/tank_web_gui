@@ -14,7 +14,7 @@
             text-align: right
         }
 
-        .btn {
+        .control-btn {
             width: 100px;
             height: 70px;
             margin: 5px 5px 5px 5px
@@ -65,6 +65,10 @@
             }
         }
 
+        function dump() {
+            keys = []
+            console.log(keys)
+        }
 
         document.addEventListener('keydown', function(event) {
             let key = event.key.toLocaleLowerCase()
@@ -95,39 +99,39 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-success" onclick="init()">Initialize</button>
+                        <button type="button" class="btn btn-success control-btn" onclick="init()">Initialize</button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-dark" onclick="sendJson('fwdlft')">Forward Left</button>
-                        <button type="button" class="btn btn-dark" onclick="sendJson('fwd')">Forward</button>
-                        <button type="button" class="btn btn-dark" onclick="sendJson('fwdright')">forward Right</button>
+                        <button type="button" class="btn btn-dark control-btn" onclick="sendJson('fwdlft')">Forward Left</button>
+                        <button type="button" class="btn btn-dark control-btn" onclick="sendJson('fwd')">Forward</button>
+                        <button type="button" class="btn btn-dark control-btn" onclick="sendJson('fwdright')">forward Right</button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-dark" onclick="sendJson('spinleft')">Spin Left</button>
-                        <button type="button" class="btn btn-warning" onclick="sendJson('stop')">Stop</button>
-                        <button type="button" class="btn btn-dark" onclick="sendJson('spinright')">Spin Right</button>
+                        <button type="button" class="btn btn-dark control-btn" onclick="sendJson('spinleft')">Spin Left</button>
+                        <button type="button" class="btn btn-warning control-btn" onclick="sendJson('stop')">Stop</button>
+                        <button type="button" class="btn btn-dark control-btn" onclick="sendJson('spinright')">Spin Right</button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-dark" onclick="sendJson('revlft')">Reverse Left</button>
-                        <button type="button" class="btn btn-dark" onclick="sendJson('rev')">Reverse</button>
-                        <button type="button" class="btn btn-dark" onclick="sendJson('revright')">Reverse Right</button>
+                        <button type="button" class="btn btn-dark control-btn" onclick="sendJson('revlft')">Reverse Left</button>
+                        <button type="button" class="btn btn-dark control-btn" onclick="sendJson('rev')">Reverse</button>
+                        <button type="button" class="btn btn-dark control-btn" onclick="sendJson('revright')">Reverse Right</button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-danger" onclick="stop()">Shut Down</button>
+                        <button type="button" class="btn btn-danger control-btn" onclick="stop()">Shut Down</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-footer text-muted">
-            Oh well, lets hope this works!
+            <button type="button" class="btn btn-outline-primary" onclick="dump()">Dump keys</button>
         </div>
     </div>
 </body>
