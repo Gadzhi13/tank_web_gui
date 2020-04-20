@@ -23,13 +23,14 @@
     <script>
         let json_obj = {"command": "stop", "speed": "1"}
         let socket
+        let keys = []
 
         function init() {
             socket = new WebSocket("wss://192.168.0.52:8082/move")
         }
 
-        function sendJson(direction) {
-            json_obj.command = direction
+        function sendJson(command) {
+            json_obj.command = command
             console.log(json_obj)
             console.log(JSON.stringify(json_obj))
             socket.send(JSON.stringify(json_obj))
@@ -38,6 +39,47 @@
         function stop() {
             socket.close()
         }
+
+        function pressed(button) {
+            return keys.indexOf(button) != -1
+        }
+
+        function handleEvent() {
+            if (pressed("w") && pressed("a")) {
+                sendJson("fwdleft")
+            } else if (pressed("w") && pressed("d")) {
+                sendJson("fwdright")
+            } else if (pressed("s") && pressed("a")) {
+                sendJson("revleft")
+            } else if (pressed("s") && pressed("d")) {
+                sendJson("revright")
+            } else if (pressed("w")) {
+                sendJson("fwd")
+            } else if (pressed("s")) {
+                sendJson("rev")
+            } else if (pressed("a")) {
+                sendJson("spinleft")
+            } else if (pressed("d")) {
+                sendJson("spinright")
+            } else {
+                sendJson("stop")
+            }
+        }
+
+
+        document.addEventListener('keydown', function(event) {
+            let key = event.key.toLocaleLowerCase()
+            if (event.repeat) return
+            keys.push(key)
+            handleEvent()
+        })
+
+
+        document.addEventListener('keyup', function(event) {
+            keys.pop(event.key.toLocaleLowerCase())
+            handleEvent()
+        })
+
     </script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
