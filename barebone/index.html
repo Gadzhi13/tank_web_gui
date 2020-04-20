@@ -20,7 +20,25 @@
             margin: 5px 5px 5px 5px
         }
     </style>
-    <script></script>
+    <script>
+        let json_obj = {"command": "stop", "speed": "1"}
+        let socket
+
+        function init() {
+            socket = new WebSocket("wss://192.168.0.52:8082/move")
+        }
+
+        function sendJson(direction) {
+            json_obj.command = direction
+            console.log(json_obj)
+            console.log(JSON.stringify(json_obj))
+            socket.send(JSON.stringify(json_obj))
+        }
+
+        function stop() {
+            socket.close()
+        }
+    </script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
@@ -34,39 +52,39 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-success">Initialize</button>
+                        <button type="button" class="btn btn-success" onclick="init()">Initialize</button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-dark">Forward Left</button>
-                        <button type="button" class="btn btn-dark">Forward</button>
-                        <button type="button" class="btn btn-dark">forward Right</button>
+                        <button type="button" class="btn btn-dark" onclick="sendJson('fwdlft')">Forward Left</button>
+                        <button type="button" class="btn btn-dark" onclick="sendJson('fwd')">Forward</button>
+                        <button type="button" class="btn btn-dark" onclick="sendJson('fwdright')">forward Right</button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-dark">Spin Left</button>
-                        <button type="button" class="btn btn-warning">Stop</button>
-                        <button type="button" class="btn btn-dark">Spin Right</button>
+                        <button type="button" class="btn btn-dark" onclick="sendJson('spinleft')">Spin Left</button>
+                        <button type="button" class="btn btn-warning" onclick="sendJson('stop')">Stop</button>
+                        <button type="button" class="btn btn-dark" onclick="sendJson('spinright')">Spin Right</button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-dark">Reverse Left</button>
-                        <button type="button" class="btn btn-dark">Reverse</button>
-                        <button type="button" class="btn btn-dark">Reverse Right</button>
+                        <button type="button" class="btn btn-dark" onclick="sendJson('revlft')">Reverse Left</button>
+                        <button type="button" class="btn btn-dark" onclick="sendJson('rev')">Reverse</button>
+                        <button type="button" class="btn btn-dark" onclick="sendJson('revright')">Reverse Right</button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-danger">Shut Down</button>
+                        <button type="button" class="btn btn-danger" onclick="stop()">Shut Down</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-footer text-muted">
-            blah blah
+            Oh well, lets hope this works!
         </div>
     </div>
 </body>
