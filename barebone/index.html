@@ -1,11 +1,72 @@
 <!DOCTYPE html>
+
 <head>
     <title>Tank Control</title>
-    <style></style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .card-title,
+        .card-body {
+            text-align: center
+        }
+
+        .card-footer {
+            text-align: right
+        }
+
+        .btn {
+            width: 100px;
+            height: 70px;
+            margin: 5px 5px 5px 5px
+        }
+    </style>
     <script></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+
 <body>
-    <div class="header">
-        <h1>Welcome to the world of tomorrow!</h1>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Welcome to the world of tomorrow!</h4>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-success">Initialize</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-dark">Forward Left</button>
+                        <button type="button" class="btn btn-dark">Forward</button>
+                        <button type="button" class="btn btn-dark">forward Right</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-dark">Spin Left</button>
+                        <button type="button" class="btn btn-warning">Stop</button>
+                        <button type="button" class="btn btn-dark">Spin Right</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-dark">Reverse Left</button>
+                        <button type="button" class="btn btn-dark">Reverse</button>
+                        <button type="button" class="btn btn-dark">Reverse Right</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-danger">Shut Down</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            blah blah
+        </div>
     </div>
 </body>
